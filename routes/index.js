@@ -18,7 +18,7 @@ module.exports = router;
 //      and sort by the name of the route.  Render information in the views/pages/mongodb.ejs
 router.get('/mongodb', function (request, response) {
 
-    MongoClient.connect(MONGOLAB_MAROON_URI, function(err, db) {
+    MongoClient.connect(url, function(err, db) {
         console.log(db);
         if(err) throw err;
         //get collection of routes
