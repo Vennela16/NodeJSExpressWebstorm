@@ -18,15 +18,16 @@ module.exports = router;
 //      and sort by the name of the route.  Render information in the views/pages/mongodb.ejs
 router.get('/mongodb', function (request, response) {
 
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(MONGOLAB_MAROON_URI, function(err, db) {
         console.log(db);
         if(err) throw err;
         //get collection of routes
         var Routes = db.db('heroku_s1f77zf9').collection('Routes');
+        console.log(Routes)
         //get all Routes with frequency >=1
         Routes.find({ frequency : { $gte: '1' } }).sort({ name: 1 }).toArray(function (err, docs) {
             if(err) throw err;
-            console.log(docs);
+
             response.render('pages/mongodb', {results: docs});
 
         });
