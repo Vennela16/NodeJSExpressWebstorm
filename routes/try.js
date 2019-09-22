@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET try page. */
-router.get('/', function(req, res, next) {
-    res.render('try', { title: 'Express' });
-});
-
 module.exports = router;
 
-app.get('/', function (request, response) {
+router.get('/', function (request, response) {
 
     mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
         if(err) throw err;
