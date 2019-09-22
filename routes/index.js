@@ -15,9 +15,8 @@ module.exports = router;
 //***** mongodb get all of the Routes in Routes collection where frequence>=1
 //      and sort by the name of the route.  Render information in the views/pages/mongodb.ejs
 router.get('/mongodb', function (request, response) {
-
-    mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
-        if(err) throw err;
+   mongodb.MongoClient.connect('mongodb://heroku_s1f77zf9:f6rd1i104os5evk26pkhbg3dn8@ds147125.mlab.com:47125/heroku_s1f77zf9', function(err, db) {
+       if(err) throw err;
         //get collection of routes
         var Routes = db.collection('Routes');
         //get all Routes with frequency >=1
